@@ -1,0 +1,170 @@
+-- =========================================
+-- PRACTICAL NO. 8
+-- TRIGGERS IN MYSQL
+-- =========================================
+
+-- =========================================
+-- CREATE DATABASE
+-- =========================================
+
+DROP DATABASE IF EXISTS EmployeeDB;
+
+CREATE DATABASE EmployeeDB;
+
+USE EmployeeDB;
+
+-- =========================================
+-- CREATE EMPLOYEE TABLE
+-- =========================================
+
+CREATE TABLE Employee (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    HireDate DATE
+);
+
+-- =========================================
+-- CREATE EMPLOYEE LOG TABLE
+-- =========================================
+
+CREATE TABLE EmpLog (
+    LogID INT AUTO_INCREMENT PRIMARY KEY,
+    EmployeeID INT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    HireDate DATE,
+    Operation VARCHAR(10),
+    UpdatedOn DATETIME,
+    UpdatedBy VARCHAR(100)
+);
+
+-- =========================================
+-- TRIGGER FOR INSERT
+-- =========================================
+
+DELIMITER //
+
+CREATE TRIGGER trg_emp_insert
+AFTER INSERT ON Employee
+FOR EACH ROW
+BEGIN
+
+    INSERT INTO EmpLog (
+        EmployeeID,
+        FirstName,
+        LastName,
+        HireDate,
+        Operation,
+        UpdatedOn,
+        UpdatedBy
+    )
+    VALUES (
+        NEW.EmployeeID,
+        NEW.FirstName,
+        NEW.LastName,
+        NEW.HireDate,
+        'INSERT',
+        NOW(),
+        USER()
+    );
+
+END //
+
+DELIMITER ;
+
+-- =========================================
+-- TRIGGER FOR UPDATE
+-- =========================================
+
+DELIMITER //
+
+CREATE TRIGGER trg_emp_update
+AFTER UPDATE ON Employee
+FOR EACH ROW
+BEGIN
+
+    INSERT INTO EmpLog (
+        EmployeeID,
+        FirstName,
+        LastName,
+        HireDate,
+        Operation,
+        UpdatedOn,
+        UpdatedBy
+    )
+    VALUES (
+        NEW.EmployeeID,
+        NEW.FirstName,
+        NEW.LastName,
+        NEW.HireDate,
+        'UPDATE',
+        NOW(),
+        USER()
+    );
+
+END //
+
+DELIMITER ;
+
+-- =========================================
+-- TRIGGER FOR DELETE
+-- =========================================
+
+DELIMITER //
+
+CREATE TRIGGER trg_emp_delete
+AFTER DELETE ON Employee
+FOR EACH ROW
+BEGIN
+
+    INSERT INTO EmpLog (
+        EmployeeID,
+        FirstName,
+        LastName,
+        HireDate,
+        Operation,
+        UpdatedOn,
+        UpdatedBy
+    )
+    VALUES (
+        OLD.EmployeeID,
+        OLD.FirstName,
+        OLD.LastName,
+        OLD.HireDate,
+        'DELETE',
+        NOW(),
+        USER()
+    );
+
+END //
+
+DELIMITER ;
+
+-- =========================================
+-- INSERT RECORD
+-- =========================================
+
+INSERT INTO Employee
+VALUES (1, 'Amit', 'Sharma', '2024-01-10');
+
+-- =========================================
+-- UPDATE RECORD
+-- =========================================
+
+UPDATE Employee
+SET LastName = 'Kumar'
+WHERE EmployeeID = 1;
+
+-- =========================================
+-- DELETE RECORD
+-- =========================================
+
+DELETE FROM Employee
+WHERE EmployeeID = 1;
+
+-- =========================================
+-- DISPLAY LOG TABLE
+-- =========================================
+
+SELECT * FROM EmpLog;
