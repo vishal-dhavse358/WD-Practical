@@ -1,4 +1,4 @@
-DROP DATABASE Com_db;
+
 CREATE DATABASE Com_db;
 
 USE Com_db;
