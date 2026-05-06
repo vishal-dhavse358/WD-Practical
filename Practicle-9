@@ -1,0 +1,99 @@
+// =========================================
+// PRACTICAL NO. 9
+// MONGODB CRUD OPERATIONS
+// =========================================
+
+// =========================================
+// SWITCH TO DATABASE
+// =========================================
+
+use CollegeDB
+
+// =========================================
+// CREATE COLLECTION
+// =========================================
+
+db.createCollection("students")
+
+// =========================================
+// 1. CREATE (INSERT)
+// =========================================
+
+// Insert One Document
+db.students.insertOne({
+    name: "Alice",
+    age: 21,
+    course: "Computer"
+})
+
+// Insert Multiple Documents
+db.students.insertMany([
+    {
+        name: "Bob",
+        age: 20,
+        course: "Maths"
+    },
+    {
+        name: "Charlie",
+        age: 22,
+        course: "IT"
+    }
+])
+
+// =========================================
+// 2. READ OPERATIONS
+// =========================================
+
+// Find All Documents
+db.students.find()
+
+// Find Documents with Condition
+db.students.find({
+    age: 21
+})
+
+// Find Specific Fields
+db.students.find(
+    {
+        age: 22
+    },
+    {
+        name: 1,
+        course: 1
+    }
+)
+
+// Find with AND Condition
+db.students.find({
+    age: { $gt: 20 },
+    course: "IT"
+})
+
+// =========================================
+// 3. UPDATE OPERATION
+// =========================================
+
+db.students.updateOne(
+    {
+        name: "Alice"
+    },
+    {
+        $set: {
+            age: 22
+        }
+    }
+)
+
+// =========================================
+// 4. DELETE OPERATION
+// =========================================
+
+db.students.deleteOne({
+    name: "Charlie"
+})
+
+// =========================================
+// VERIFY FINAL DATA
+// =========================================
+
+db.students.find()
