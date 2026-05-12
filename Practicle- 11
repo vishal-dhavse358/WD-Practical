@@ -1,1 +1,231 @@
+<?php
 
+$inputString = "";
+
+$operation = "";
+
+$result = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $inputString = $_POST['inputString'] ?? "";
+
+    $operation = $_POST['operation'] ?? "";
+
+    switch ($operation) {
+
+        case 'reverse':
+
+            $result = strrev($inputString);
+
+            break;
+
+        case 'length':
+
+            $result = strlen($inputString);
+
+            break;
+
+        case 'substring':
+
+            $start = intval($_POST['start'] ?? 0);
+
+            $length = intval($_POST['length'] ?? strlen($inputString));
+
+            $result = substr($inputString, $start, $length);
+
+            break;
+
+    }
+
+}
+
+?>
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>PHP String Manipulation</title>
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background-color: #f4f4f9;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            height: 100vh;
+
+        }
+
+        .container {
+
+            background-color: #fff;
+
+            padding: 30px 40px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+            width: 450px;
+
+        }
+
+        h2 {
+
+            text-align: center;
+
+            color: #333;
+
+        }
+
+        input[type="text"], input[type="number"], select {
+
+            width: 100%;
+
+            padding: 10px;
+
+            margin: 8px 0 15px 0;
+
+            border: 1px solid #ccc;
+
+            border-radius: 6px;
+
+            box-sizing: border-box;
+
+        }
+
+        input[type="submit"] {
+
+            width: 100%;
+
+            background-color: #007BFF;
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+        }
+
+        input[type="submit"]:hover {
+
+            background-color: #0069d9;
+
+        }
+
+        .output {
+
+            background-color: #e8f0fe;
+
+            border-left: 6px solid #007BFF;
+
+            padding: 10px 15px;
+
+            margin-top: 20px;
+
+            border-radius: 6px;
+
+        }
+
+        .extra-inputs {
+
+            display: none;
+
+        }
+
+    </style>
+
+    <script>
+
+        function toggleSubstringInputs() {
+
+            const operation = document.getElementById("operation").value;
+
+            const extraInputs = document.getElementById("substring-inputs");
+
+            extraInputs.style.display = (operation === "substring") ? "block" : "none";
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>PHP String Manipulation</h2>
+
+        <form method="post" action="">
+
+            Enter String:
+
+            <input type="text" name="inputString" required value="<?php echo htmlspecialchars($inputString); ?>"><br>
+
+            Choose Operation:
+
+            <select name="operation" id="operation" onchange="toggleSubstringInputs()" required>
+
+                <option value="">--Select--</option>
+
+                <option value="reverse" <?php if($operation=="reverse") echo "selected"; ?>>Reverse</option>
+
+                <option value="length" <?php if($operation=="length") echo "selected"; ?>>Length</option>
+
+                <option value="substring" <?php if($operation=="substring") echo "selected"; ?>>Substring</option>
+
+            </select>
+
+            <div id="substring-inputs" class="extra-inputs" style="display: <?php echo ($operation=="substring") ? "block" : "none"; ?>;">
+
+                Start Position:
+
+                <input type="number" name="start" value="<?php echo $_POST['start'] ?? 0; ?>"><br>
+
+                Length:
+
+                <input type="number" name="length" value="<?php echo $_POST['length'] ?? 0; ?>"><br>
+
+            </div>
+
+            <input type="submit" value="Process">
+
+        </form>
+
+        <?php if ($_SERVER["REQUEST_METHOD"] == "POST") : ?>
+
+            <div class="output">
+
+                <h3>Result:</h3>
+
+                <p><?php echo htmlspecialchars($result); ?></p>
+
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+
+</body>
+
+</html>
