@@ -1,1 +1,115 @@
+<?php
 
+// Set timezone
+date_default_timezone_set("Asia/Kolkata");
+
+// Function to get greeting
+function getGreeting() {
+
+    $hour = date("H");
+
+    if ($hour < 12) {
+
+        return "Good Morning!";
+
+    } elseif ($hour < 18) {
+
+        return "Good Afternoon!";
+
+    } else {
+
+        return "Good Evening!";
+
+    }
+
+}
+
+?>
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Welcome Page</title>
+
+    <!-- Auto refresh every 1 second -->
+    <meta http-equiv="refresh" content="1">
+
+    <!-- Simple CSS for UI -->
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+
+            color: #fff;
+
+            text-align: center;
+
+            padding-top: 100px;
+
+        }
+
+        h1 {
+
+            font-size: 50px;
+
+            margin-bottom: 20px;
+
+        }
+
+        h2 {
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+
+        }
+
+        p {
+
+            font-size: 24px;
+
+        }
+
+        .clock {
+
+            font-size: 28px;
+
+            margin-top: 10px;
+
+            padding: 10px 20px;
+
+            background: rgba(255,255,255,0.2);
+
+            border-radius: 10px;
+
+            display: inline-block;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Welcome!</h1>
+
+    <p><?php echo getGreeting(); ?></p>
+
+    <div class="clock">
+
+        <?php echo date("l, d-m-Y h:i:s A"); ?>
+
+    </div>
+
+</body>
+
+</html>
