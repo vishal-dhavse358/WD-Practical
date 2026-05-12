@@ -1,1 +1,161 @@
+<?php
 
+$name = $email = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $name = $_POST['name'] ?? "";
+
+    $email = $_POST['email'] ?? "";
+
+}
+
+?>
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Styled PHP Form</title>
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background-color: #f2f2f2;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            height: 100vh;
+
+        }
+
+        .container {
+
+            background-color: #fff;
+
+            padding: 30px 40px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+            width: 400px;
+
+        }
+
+        h2 {
+
+            text-align: center;
+
+            color: #333;
+
+        }
+
+        input[type="text"], input[type="email"] {
+
+            width: 100%;
+
+            padding: 12px 10px;
+
+            margin: 8px 0 20px 0;
+
+            border: 1px solid #ccc;
+
+            border-radius: 6px;
+
+            box-sizing: border-box;
+
+        }
+
+        input[type="submit"] {
+
+            width: 100%;
+
+            background-color: #4CAF50;
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+        }
+
+        input[type="submit"]:hover {
+
+            background-color: #45a049;
+
+        }
+
+        .output {
+
+            background-color: #e7f3fe;
+
+            border-left: 6px solid #2196F3;
+
+            padding: 10px 15px;
+
+            margin-top: 20px;
+
+            border-radius: 6px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Enter Your Details</h2>
+
+        <form method="post" action="">
+
+            Name:
+
+            <input type="text" name="name" required value="<?php echo htmlspecialchars($name); ?>"><br>
+
+            Email:
+
+            <input type="email" name="email" required value="<?php echo htmlspecialchars($email); ?>"><br>
+
+            <input type="submit" value="Submit">
+
+        </form>
+
+        <?php if ($_SERVER["REQUEST_METHOD"] == "POST") : ?>
+
+            <div class="output">
+
+                <h3>Your Input:</h3>
+
+                <p><strong>Name:</strong> <?php echo htmlspecialchars($name); ?></p>
+
+                <p><strong>Email:</strong> <?php echo htmlspecialchars($email); ?></p>
+
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+
+</body>
+
+</html>
