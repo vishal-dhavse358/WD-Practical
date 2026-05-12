@@ -1,1 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dynamic Content using DOM</title>
 
+<script>
+function changeContent()
+{
+    document.getElementById("demo").innerHTML =
+    "Welcome! The content has been changed dynamically using JavaScript DOM.";
+}
+</script>
+
+</head>
+
+<body>
+
+<h2>JavaScript DOM Example</h2>
+
+<p id="demo">Click the button to change this text.</p>
+
+<button onclick="changeContent()">Click Here</button>
+
+</body>
+</html>
