@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Web Form Validation</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="submit"] {
+
+            display: block;
+            margin: 10px 0;
+            padding: 8px;
+            width: 300px;
+
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h2>Registration Form</h2>
+
+    <form id="myForm" onsubmit="return validateForm()">
+
+        <label for="name">Name:</label>
+
+        <input type="text" id="name" name="name">
+
+        <span class="error" id="nameError"></span>
+
+        <label for="email">Email:</label>
+
+        <input type="email" id="email" name="email">
+
+        <span class="error" id="emailError"></span>
+
+        <input type="submit" value="Submit">
+
+    </form>
+
+    <script>
+
+        function validateForm() {
+
+            let isValid = true;
+
+            // Get form values
+
+            const name = document.getElementById('name').value.trim();
+
+            const email = document.getElementById('email').value.trim();
+
+            // Clear previous error messages
+
+            document.getElementById('nameError').innerText = "";
+
+            document.getElementById('emailError').innerText = "";
+
+            // Check if name is empty
+
+            if (name === "") {
+
+                document.getElementById('nameError').innerText =
+                    "Name cannot be empty";
+
+                isValid = false;
+
+            }
+
+            // Check if email is empty
+
+            if (email === "") {
+
+                document.getElementById('emailError').innerText =
+                    "Email cannot be empty";
+
+                isValid = false;
+
+            } else {
+
+                // Validate email format using regex
+
+                const emailPattern =
+                    /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+                if (!emailPattern.test(email)) {
+
+                    document.getElementById('emailError').innerText =
+                        "Invalid email format";
+
+                    isValid = false;
+
+                }
+
+            }
+
+            return isValid; // Prevent form submission if validation fails
+
+        }
+
+    </script>
+
+</body>
+
+</html>
