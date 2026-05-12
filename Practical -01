@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Personal Details</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        hr {
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h2><u>Personal Details</u></h2>
+
+    <hr>
+
+    <p><b>Name:</b> <i>Hetal Sunil Bagal</i></p>
+
+    <p><strong>Age:</strong> 19</p>
+
+    <p><b>Gender:</b> <em>Female</em></p>
+
+    <p><b>Qualification:</b> <u>Bachelor of Engineering</u></p>
+
+    <p><b>Department:</b> <big>Computer Engineering</big></p>
+
+    <p><b>Email:</b> <small>hetalbagal@gmail.com</small></p>
+
+    <p><b>College:</b> <mark>TSSMS BSCOER, Narhe, Pune</mark></p>
+
+    <p><b>Old Contact No:</b> <del>1234567890</del></p>
+
+    <p><b>New Contact No:</b> <ins>8766557876</ins></p>
+
+    <p><b>Date of Birth:</b> 21<sup>st</sup> August 2006</p>
+
+    <p><b>Chemistry Formula:</b> H<sub>2</sub>O</p>
+
+    <p><b>Programming Language:</b> <code>HTML</code></p>
+
+    <p><b>Address:</b></p>
+
+    <pre>
+Pune,
+Maharashtra,
+India
+    </pre>
+
+</body>
+
+</html>
