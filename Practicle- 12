@@ -1,1 +1,175 @@
+<?php
 
+session_start();
+
+if (!isset($_SESSION['values'])) {
+
+    $_SESSION['values'] = [];
+
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['newValue'])) {
+
+    $newValue = $_POST['newValue'];
+
+    $_SESSION['values'][] = $newValue; // Add value to the array
+
+}
+
+?>
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>PHP Array Storage</title>
+
+    <style>
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background-color: #f4f4f9;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: flex-start;
+
+            padding-top: 50px;
+
+        }
+
+        .container {
+
+            background-color: #fff;
+
+            padding: 30px 40px;
+
+            border-radius: 10px;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+            width: 400px;
+
+        }
+
+        h2 {
+
+            text-align: center;
+
+            color: #333;
+
+        }
+
+        input[type="text"] {
+
+            width: 100%;
+
+            padding: 10px;
+
+            margin: 8px 0 15px 0;
+
+            border: 1px solid #ccc;
+
+            border-radius: 6px;
+
+            box-sizing: border-box;
+
+        }
+
+        input[type="submit"] {
+
+            width: 100%;
+
+            background-color: #28a745;
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+        }
+
+        input[type="submit"]:hover {
+
+            background-color: #218838;
+
+        }
+
+        .output {
+
+            background-color: #e9f7ef;
+
+            border-left: 6px solid #28a745;
+
+            padding: 10px 15px;
+
+            margin-top: 20px;
+
+            border-radius: 6px;
+
+        }
+
+        ul {
+
+            padding-left: 20px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Store Values in Array</h2>
+
+        <form method="post" action="">
+
+            Enter Value:
+
+            <input type="text" name="newValue" required>
+
+            <input type="submit" value="Add to Array">
+
+        </form>
+
+        <?php if (!empty($_SESSION['values'])): ?>
+
+            <div class="output">
+
+                <h3>Array Values:</h3>
+
+                <ul>
+
+                    <?php foreach ($_SESSION['values'] as $index => $value): ?>
+
+                        <li><?php echo htmlspecialchars($value); ?></li>
+
+                    <?php endforeach; ?>
+
+                </ul>
+
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+
+</body>
+
+</html>
