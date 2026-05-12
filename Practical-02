@@ -1,1 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Webpage Elements Example</title>
+
+    <style>
+
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+            width: 50%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Style for the nested table */
+        .nested-table {
+            border: none;
+            width: 100%;
+            margin: 0;
+        }
+
+        .nested-table td {
+            border: none;
+            padding: 4px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>HTML Elements Demonstration</h1>
+
+    <h2>Image Example</h2>
+
+    <!-- Replace 'https://picsum.photos' with the path to your own image file if you have one saved locally -->
+
+    <img src="cute puppy.jpg" alt="A cute puppy" width="200" height="150">
+
+    <p>This is an image embedded using the <code>&lt;img&gt;</code> tag.</p>
+
+    <h2>Hyperlink Example</h2>
+
+    <!-- This hyperlink opens a search engine in a new browser tab -->
+
+    <p>
+        Visit a popular search engine through this
+        <a href="https://www.google.com" target="_blank">
+            Google Search link
+        </a>.
+    </p>
+
+    <h2>Nested Table Example</h2>
+
+    <table>
+
+        <caption>Product Information and Details</caption>
+
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Product Name</th>
+                <th>Details (Nested Table)</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>Electronics</td>
+                <td>Smartphone X</td>
+
+                <td>
+
+                    <!-- Nested Table Starts Here -->
+
+                    <table class="nested-table">
+
+                        <tr>
+                            <td>Price:</td>
+                            <td>$699</td>
+                        </tr>
+
+                        <tr>
+                            <td>Color:</td>
+                            <td>Black</td>
+                        </tr>
+
+                        <tr>
+                            <td>In Stock:</td>
+                            <td>Yes</td>
+                        </tr>
+
+                    </table>
+
+                    <!-- Nested Table Ends Here -->
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Apparel</td>
+                <td>T-Shirt</td>
+
+                <td>
+
+                    <!-- Another Nested Table -->
+
+                    <table class="nested-table">
+
+                        <tr>
+                            <td>Price:</td>
+                            <td>$19.99</td>
+                        </tr>
+
+                        <tr>
+                            <td>Color:</td>
+                            <td>Blue</td>
+                        </tr>
+
+                        <tr>
+                            <td>In Stock:</td>
+                            <td>No</td>
+                        </tr>
+
+                    </table>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</body>
+
+</html>
