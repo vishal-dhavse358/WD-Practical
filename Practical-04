@@ -1,1 +1,51 @@
+h2.external{
+    color: purple;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
 
+table.external{
+    width: 60%;
+    border-collapse: collapse;
+    margin: 10px auto;
+}
+
+table.external th,
+table.external td{
+    border: 1px solid blue;
+    padding: 8px;
+    text-align: left;
+}
+
+table.external th{
+    background-color: lightyellow;
+}
+
+
+
+
+
+
+
+h2.external{
+    color: purple;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+table.external{
+    width: 60%;
+    border-collapse: collapse;
+    margin: 10px auto;
+}
+
+table.external th,
+table.external td{
+    border: 1px solid blue;
+    padding: 8px;
+    text-align: left;
+}
+
+table.external th{
+    background-color: lightyellow;
+}
